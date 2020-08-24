@@ -1,0 +1,35 @@
+#!/bin/bash
+
+g++ doubly_linked_lists.c -lpthread -o dll
+read -p "Enter test_file no (1,2 or 3): "  t_file
+while [ "$t_file" -eq 1 ] || [ "$t_file" -eq 2 ] || [ "$t_file" -eq 3 ]
+do
+	read -p "Enter number of runs: "  runs
+	if [ "$t_file" -eq "1" ]
+	then
+		for i in $(seq 1 $runs)
+		do	
+			./dll < test_1.txt
+			echo "-----------------------------------"
+			echo
+		done
+	else
+		if [ "$t_file" -eq "2" ]
+		then
+			for i in $(seq 1 $runs)
+			do	
+				./dll < test_2.txt
+				echo "-----------------------------------"
+				echo
+			done
+		else
+			for i in $(seq 1 $runs)
+			do	
+				./dll < test_3.txt
+				echo "-----------------------------------"
+				echo
+			done
+		fi
+	fi
+	read -p "Enter test_file no (1,2 or 3): "  t_file
+done
